@@ -93,7 +93,7 @@ body {
 }
 
 .kit-preview {
-  margin: 2rem 0;
+  margin: 2rem 0 3rem 0;
 }
 
 .kit-item {
@@ -164,11 +164,21 @@ body {
   background: #f8fafc;
   padding: 3rem 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.after-hero-section .container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .after-hero-section .primary-button {
   color: white;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0;
 }
 
 .after-hero-section .primary-button:hover {
