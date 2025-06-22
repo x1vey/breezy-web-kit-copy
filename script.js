@@ -1,11 +1,61 @@
 
-// Mobile Menu Toggle
-const mobileToggle = document.getElementById('mobile-toggle');
-const navLinks = document.querySelector('.nav-links');
+// Modal functionality
+const modal = document.getElementById('lead-form-modal');
+const heroCta = document.getElementById('hero-cta');
+const bottomCta = document.getElementById('bottom-cta');
+const closeBtn = document.getElementsByClassName('close')[0];
+const leadForm = document.getElementById('lead-form');
 
-mobileToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-  mobileToggle.classList.toggle('active');
+// Open modal when CTA buttons are clicked
+heroCta.addEventListener('click', () => {
+  modal.style.display = 'block';
+  trackEvent('hero_cta_clicked', { location: 'hero_section' });
+});
+
+bottomCta.addEventListener('click', () => {
+  modal.style.display = 'block';
+  trackEvent('bottom_cta_clicked', { location: 'bottom_section' });
+});
+
+// Close modal when X is clicked
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+// Handle form submission
+leadForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  const formData = new FormData(leadForm);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  
+  // HERE IS WHERE YOU ADD YOUR LEAD MAGNET DELIVERY LOGIC
+  console.log('Lead captured:', { name, email });
+  
+  // Example: Send to your email service, CRM, or lead magnet delivery system
+  // fetch('/api/leads', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({ name, email })
+  // });
+  
+  // For now, show success message
+  alert(`Thank you ${name}! Check your email at ${email} for your free fitness guide.`);
+  
+  // Track conversion
+  trackEvent('lead_captured', { name, email });
+  
+  // Close modal and reset form
+  modal.style.display = 'none';
+  leadForm.reset();
 });
 
 // Smooth Scrolling for Navigation Links
@@ -20,74 +70,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       });
     }
   });
-});
-
-// Button Click Handlers - THIS IS WHERE YOU ADD YOUR LINKS
-const buttons = {
-  // Navigation CTA button
-  'nav-cta': () => {
-    console.log('Navigation CTA clicked');
-    // ADD YOUR LINK HERE: window.open('https://your-booking-link.com', '_blank');
-    alert('Navigation CTA clicked! Add your booking link in script.js');
-  },
-  
-  // Hero section main CTA
-  'hero-cta': () => {
-    console.log('Hero CTA clicked');
-    // ADD YOUR MAIN BOOKING LINK HERE: window.open('https://your-main-booking-link.com', '_blank');
-    alert('Hero CTA clicked! Add your main booking link in script.js');
-  },
-  
-  // Learn more button
-  'learn-more': () => {
-    console.log('Learn more clicked');
-    // Scroll to services section or add external link
-    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-// Pricing plan buttons
-document.querySelectorAll('.plan-button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const plan = e.target.getAttribute('data-plan');
-    console.log(`${plan} plan selected`);
-    
-    // ADD YOUR PRICING LINKS HERE based on plan
-    switch(plan) {
-      case 'starter':
-        // window.open('https://your-starter-plan-link.com', '_blank');
-        alert('Starter plan selected! Add your payment link in script.js');
-        break;
-      case 'premium':
-        // window.open('https://your-premium-plan-link.com', '_blank');
-        alert('Premium plan selected! Add your payment link in script.js');
-        break;
-      case 'elite':
-        // window.open('https://your-elite-plan-link.com', '_blank');
-        alert('Elite plan selected! Add your payment link in script.js');
-        break;
-    }
-  });
-});
-
-// Add event listeners for all buttons
-Object.keys(buttons).forEach(buttonId => {
-  const button = document.getElementById(buttonId);
-  if (button) {
-    button.addEventListener('click', buttons[buttonId]);
-  }
-});
-
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 100) {
-    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-  } else {
-    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-    navbar.style.boxShadow = 'none';
-  }
 });
 
 // Intersection Observer for animations
@@ -106,25 +88,14 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.service-card, .pricing-card, .about-text, .about-image').forEach(el => {
+document.querySelectorAll('.service-card, .about-text, .about-image').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
 
-// Form submission handler (if you add a contact form later)
-function handleFormSubmit(formData) {
-  console.log('Form submitted:', formData);
-  // ADD YOUR FORM HANDLING HERE
-  // This could be integrated with services like:
-  // - Netlify Forms
-  // - Formspree
-  // - EmailJS
-  // - Your own backend API
-}
-
-// Analytics tracking (add your tracking code)
+// Analytics tracking function
 function trackEvent(eventName, eventData) {
   console.log('Event tracked:', eventName, eventData);
   // ADD YOUR ANALYTICS TRACKING HERE
@@ -134,16 +105,47 @@ function trackEvent(eventName, eventData) {
   // analytics.track(eventName, eventData); // Segment
 }
 
-// Track button clicks for analytics
-document.querySelectorAll('button').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const buttonText = e.target.textContent.trim();
-    trackEvent('button_click', {
-      button_text: buttonText,
-      page_url: window.location.href
-    });
-  });
-});
+// Form submission handler for lead magnet delivery
+function handleLeadSubmission(leadData) {
+  console.log('Lead submission:', leadData);
+  // ADD YOUR LEAD MAGNET DELIVERY LOGIC HERE
+  // This could integrate with:
+  // - Email services (Mailchimp, ConvertKit, etc.)
+  // - CRM systems (HubSpot, Salesforce, etc.)
+  // - Lead magnet delivery services
+  // - Your own backend API
+  
+  // Example implementations:
+  
+  // 1. Send to email service:
+  // return fetch('https://api.mailchimp.com/3.0/lists/YOUR_LIST_ID/members', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Authorization': 'Bearer YOUR_API_KEY',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     email_address: leadData.email,
+  //     status: 'subscribed',
+  //     merge_fields: { FNAME: leadData.name }
+  //   })
+  // });
+  
+  // 2. Send to your backend:
+  // return fetch('/api/leads', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(leadData)
+  // });
+  
+  // 3. Use a form service like Formspree:
+  // return fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(leadData)
+  // });
+}
 
 console.log('🚀 Landing page loaded successfully!');
-console.log('📝 To add your links, edit the button handlers in script.js');
+console.log('📝 To connect your lead magnet delivery, edit the handleLeadSubmission function in script.js');
+console.log('🖼️ To change images, replace the Cloudinary URLs in index.html');
