@@ -2,6 +2,7 @@
 // Modal functionality
 const modal = document.getElementById('lead-form-modal');
 const heroCta = document.getElementById('hero-cta');
+const afterHeroCta = document.getElementById('after-hero-cta');
 const bottomCta = document.getElementById('bottom-cta');
 const closeBtn = document.getElementsByClassName('close')[0];
 const leadForm = document.getElementById('lead-form');
@@ -10,6 +11,11 @@ const leadForm = document.getElementById('lead-form');
 heroCta.addEventListener('click', () => {
   modal.style.display = 'block';
   trackEvent('hero_cta_clicked', { location: 'hero_section' });
+});
+
+afterHeroCta.addEventListener('click', () => {
+  modal.style.display = 'block';
+  trackEvent('after_hero_cta_clicked', { location: 'after_hero_section' });
 });
 
 bottomCta.addEventListener('click', () => {
@@ -136,7 +142,7 @@ function handleLeadSubmission(leadData) {
   //   method: 'POST',
   //   headers: { 'Content-Type': 'application/json' },
   //   body: JSON.stringify(leadData)
-  // });
+  //   });
   
   // 3. Use a form service like Formspree:
   // return fetch('https://formspree.io/f/YOUR_FORM_ID', {

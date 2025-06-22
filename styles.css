@@ -1,3 +1,4 @@
+
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -71,9 +72,10 @@ body {
 
 .hero-content {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
+  min-height: 60vh;
 }
 
 .hero-title {
@@ -143,14 +145,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .hero-image img {
-  width: 280px;
-  height: 280px;
+  width: 100%;
+  max-width: 350px;
+  height: 350px;
   border-radius: 15px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+}
+
+/* New Section After Hero */
+.after-hero-section {
+  background: #f8fafc;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.after-hero-section .primary-button {
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.after-hero-section .primary-button:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
 /* Services Section */
@@ -201,10 +223,12 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   margin: 0 auto 1rem;
   display: block;
+  background: #f8fafc;
+  padding: 5px;
 }
 
 .service-card h3 {
@@ -273,8 +297,10 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 20px;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  background: #f8fafc;
+  padding: 10px;
 }
 
 /* Bottom CTA Section */
@@ -419,7 +445,7 @@ body {
     text-align: center;
   }
   
-  .hero-img, .trainer-img {
+  .hero-image img, .trainer-img {
     width: 250px;
     height: 250px;
   }
