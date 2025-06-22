@@ -1,24 +1,227 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>breezy-web-kit-copy</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="breezy-web-kit-copy" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>Transform Your Body - Personal Training</title>
+    <meta name="description" content="Professional personal training services to help you achieve your fitness goals" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h3>FitTransform</h3>
+        </div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <button class="cta-button" id="nav-cta">Get Started</button>
+        </div>
+        <div class="mobile-menu-toggle" id="mobile-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Transform Your Body,<br>
+              <span class="gradient-text">Transform Your Life</span>
+            </h1>
+            <p class="hero-description">
+              Get personalized training programs, nutrition guidance, and the motivation you need to achieve your fitness goals. Start your transformation journey today.
+            </p>
+            <div class="hero-buttons">
+              <button class="primary-button" id="hero-cta">Start Your Journey</button>
+              <button class="secondary-button" id="learn-more">Learn More</button>
+            </div>
+            <div class="hero-stats">
+              <div class="stat">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Clients Transformed</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">5+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Success Rate</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="image-placeholder">
+              <div class="fitness-icon">💪</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>What You Get</h2>
+          <p>Comprehensive fitness solutions tailored to your unique goals</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🏋️</div>
+            <h3>Personal Training</h3>
+            <p>One-on-one sessions designed specifically for your fitness level and goals</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🥗</div>
+            <h3>Nutrition Coaching</h3>
+            <p>Customized meal plans and nutrition guidance to fuel your transformation</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Mobile App Access</h3>
+            <p>Track workouts, meals, and progress with our exclusive mobile app</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">💬</div>
+            <h3>24/7 Support</h3>
+            <p>Get answers to your questions and stay motivated with round-the-clock support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Hi, I'm Your Personal Trainer</h2>
+            <p class="about-description">
+              With over 5 years of experience in the fitness industry, I've helped hundreds of clients achieve their dream bodies and build lasting healthy habits.
+            </p>
+            <p>
+              My approach combines proven training methods with personalized nutrition plans and continuous support to ensure you not only reach your goals but maintain them for life.
+            </p>
+            <div class="credentials">
+              <div class="credential">✓ Certified Personal Trainer</div>
+              <div class="credential">✓ Nutrition Specialist</div>
+              <div class="credential">✓ 500+ Success Stories</div>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="trainer-placeholder">
+              <div class="trainer-icon">👨‍💼</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="contact" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2>Choose Your Plan</h2>
+          <p>Flexible options to fit your schedule and budget</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Starter</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">99</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features">
+              <li>4 Personal Training Sessions</li>
+              <li>Basic Nutrition Plan</li>
+              <li>Mobile App Access</li>
+              <li>Email Support</li>
+            </ul>
+            <button class="plan-button" data-plan="starter">Choose Starter</button>
+          </div>
+          <div class="pricing-card featured">
+            <div class="popular-badge">Most Popular</div>
+            <h3>Premium</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">199</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features">
+              <li>8 Personal Training Sessions</li>
+              <li>Custom Nutrition & Meal Prep</li>
+              <li>Mobile App Access</li>
+              <li>24/7 Chat Support</li>
+              <li>Progress Tracking</li>
+            </ul>
+            <button class="plan-button" data-plan="premium">Choose Premium</button>
+          </div>
+          <div class="pricing-card">
+            <h3>Elite</h3>
+            <div class="price">
+              <span class="currency">$</span>
+              <span class="amount">299</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="features">
+              <li>Unlimited Training Sessions</li>
+              <li>Personal Chef Consultation</li>
+              <li>Mobile App Access</li>
+              <li>24/7 Phone & Chat Support</li>
+              <li>Weekly Check-ins</li>
+              <li>Supplement Guidance</li>
+            </ul>
+            <button class="plan-button" data-plan="elite">Choose Elite</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>FitTransform</h3>
+            <p>Transform your body, transform your life</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h4>Services</h4>
+              <a href="#services">Personal Training</a>
+              <a href="#services">Nutrition Coaching</a>
+              <a href="#services">Mobile App</a>
+            </div>
+            <div class="footer-column">
+              <h4>Company</h4>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
+              <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 FitTransform. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
