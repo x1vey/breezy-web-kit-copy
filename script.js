@@ -2,8 +2,8 @@
 // Modal functionality
 const modal = document.getElementById('lead-form-modal');
 const heroCta = document.getElementById('hero-cta');
-const afterHeroCta = document.getElementById('after-hero-cta');
-const bottomCta = document.getElementById('bottom-cta');
+//const afterHeroCta = document.getElementById('after-hero-cta');
+//const bottomCta = document.getElementById('bottom-cta');
 const closeBtn = document.getElementsByClassName('close')[0];
 const leadForm = document.getElementById('lead-form');
 
